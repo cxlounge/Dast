@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     # Scan with Checkmarx DAST
     - name: run cxdast on my web app
-      uses: checkmarx/dast-github-action@latest
+      uses: checkmarx/dast-github-action@v1.0.2
       env: 
         CX_APIKEY: ${{ secrets.CXONE_APIKEY }}
       with:

@@ -27,7 +27,7 @@ jobs:
         command: api
         config: ${{ github.event.pull_request.head.sha }}/dast-config/api.yaml
         environment_id: bea9d6ea-81b2-4212-a8f5-25ab1b890553
-        openapi: ${{ github.event.pull_request.head.sha }}/swagger/openapi.json
+        openapi: ${{ github.event.pull_request.head.sha }}/swagger/openapi.yaml
         #project_id: 02013b5b-6837-40a5-8311-5f4779e82d71
         base_url: https://deu.ast.checkmarx.net/
         # fail_on: 'HIGH'

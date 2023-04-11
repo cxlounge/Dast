@@ -1,0 +1,29 @@
+# Checkmarx DAST
+
+name: Dast-web
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    # Scan with Checkmarx DAST
+    - name: run cxdast on my web app
+      uses: checkmarx/dast-action@latest
+      env: 
+        CX_APIKEY: ${{ secrets.CXONE_APIKEY }}
+      with:
+        command: "web"
+        config: 'dast-config/web.yaml'
+        environment_id: 19bb1bec-6e96-4785-9611-9a9a87182c03
+        base_url: "deu.ast.checkmarx.net/"
+        # fail_on: 'HIGH'
+        verbose: true
+        

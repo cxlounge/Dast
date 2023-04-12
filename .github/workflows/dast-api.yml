@@ -2,10 +2,10 @@
 
 name: Dast-API
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v3
     
     # Scan with Checkmarx DAST
-    - name: run cxdast on my web app
+    - name: run cxdast on my API 
       uses: checkmarx/dast-github-action@v1.0.2
       env: 
         CX_APIKEY: ${{ secrets.CXONE_CANARY_APIKEY }}
@@ -31,12 +31,12 @@ jobs:
         # fail_on: 'HIGH'
         verbose: true
         output: ./output
-    - name: Reclaim output directory  
+    - name: Reclaim output directory
       if: always()  
       run: sudo chown -R 1001:1001 ${{ github.workspace }}/output
     - uses: actions/upload-artifact@v3
       if: always()
-      name: Upload Logs
+      name: Attach DAST report as an artifact to workflow  
       with:
         name: report
         path: ./output        

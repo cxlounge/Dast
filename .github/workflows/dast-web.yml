@@ -21,9 +21,9 @@ jobs:
         CX_APIKEY: ${{ secrets.CXONE_APIKEY }}
       with:
         command: "web"
-        config: 'dast-config/web.yaml'
-        environment_id: 19bb1bec-6e96-4785-9611-9a9a87182c03
-        base_url: https://deu.ast.checkmarx.net/
-        # fail_on: 'HIGH'
+        config: './dast-config/web.yaml'
+        base_url: "https://deu.ast.checkmarx.net"
+        environment_id: "2f776f4a-dfda-46d1-9fda-b879307d9b76"
+        fail_on: "HIGH"
         verbose: true
-        
+        output: ./output

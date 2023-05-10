@@ -20,7 +20,7 @@ jobs:
     - name: run cxdast on my API 
       uses: checkmarx/dast-github-action@v1.0.2
       env: 
-        CX_APIKEY: ${{ secrets.CXONE_CANARY_APIKEY }}
+        CX_APIKEY: ${{ secrets.CXONE_APIKEY }}
       with:
         command: api
         config: ./dast-config/api.yaml
